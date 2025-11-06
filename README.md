@@ -1,9 +1,7 @@
+## NAME: KOWSHIK P
+## REG NO: 212224040164
+
 # Linux-IPC-Semaphores
-Ex05-Linux IPC-Semaphores
-### Name : Kowshik P
-### reg no : 212224040164
-###
-# AIM: Linux-IPC-Semaphores
 Ex05-Linux IPC-Semaphores
 
 # AIM:
@@ -26,10 +24,12 @@ Execute the C Program for the desired output.
 # PROGRAM:
 
 ## Write a C program that implements a producer-consumer system with two processes using Semaphores.
+
 ```
 /*
- * sem.c  - demonstrates a basic producer-consumer
- *                            implementation.              */
+ * sem-producer-consumer.c  - demonstrates a basic producer-consumer
+ *                            implementation.
+ */
 #include <stdio.h>	 /* standard I/O routines.              */
 #include <stdlib.h>      /* rand() and srand() functions        */
 #include <unistd.h>	 /* fork(), etc.                        */
@@ -42,7 +42,6 @@ Execute the C Program for the desired output.
 /* union semun is defined by including <sys/sem.h> */
 #else
 /* according to X/OPEN we have to define it ourselves */
-
 union semun {
         int val;                    /* value for SETVAL */
         struct semid_ds *buf;       /* buffer for IPC_STAT, IPC_SET */
@@ -76,7 +75,7 @@ int main(int argc, char* argv[])
 	case -1:	/* fork() failed */
 	    perror("fork");
 	    exit(1);
-case 0:		/* child process here */
+	case 0:		/* child process here */
 	    for (i=0; i<NUM_LOOPS; i++) {
 		/* block on the semaphore, unless it's value is non-negative. */
 		sem_op.sem_num = 0;
@@ -93,7 +92,7 @@ case 0:		/* child process here */
 		fflush(stdout);
 		/* increase the value of the semaphore by 1. */
 		sem_op.sem_num = 0;
-sem_op.sem_op = 1;
+					sem_op.sem_op = 1;
 		sem_op.sem_flg = 0;
 		semop(sem_set_id, &sem_op, 1);
 		/* pause execution for a little bit, to allow the */
@@ -106,61 +105,22 @@ sem_op.sem_op = 1;
 		                      sleep(10); }
 if(NUM_LOOPS>=10)    {
 	    semctl(sem_set_id, 0, IPC_RMID, sem_val) ;} // Remove the sem_set_id
-	    }}
-	    break;
-    }
-    return 0;
-}
-
+	    }
+    
+    return 0;}
 
 ```
 
-## OUTPUT
-<img width="421" height="663" alt="image" src="https://github.com/user-attachments/assets/754ce50a-617f-4383-8f51-8722258a1bab" />
-
-$ ./sem.o 
-
-$ ipcs
-
-<img width="551" height="337" alt="image" src="https://github.com/user-attachments/assets/86e95805-b0eb-4f5f-b2a7-a645cf749c7c" />
-
-
-
-
-# RESULT:
-The program is executed successfully.
-
-To Write a C program that implements a producer-consumer system with two processes using Semaphores.
-
-# DESIGN STEPS:
-
-### Step 1:
-
-Navigate to any Linux environment installed on the system or installed inside a virtual environment like virtual box/vmware or online linux JSLinux (https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192) or docker.
-
-### Step 2:
-
-Write the C Program using Linux Process API - Sempahores
-
-### Step 3:
-
-Execute the C Program for the desired output. 
-
-# PROGRAM:
-
-## Write a C program that implements a producer-consumer system with two processes using Semaphores.
-
-
 
 
 ## OUTPUT
-$ ./sem.o 
-
-
-$ ipcs
 
 
 
+
+
+
+<img width="766" height="966" alt="319452618-9384cf74-e7c3-4c52-9afc-c8990986c42e" src="https://github.com/user-attachments/assets/d0e4e8ed-cf51-46aa-91b7-55638a127372" />
 
 
 # RESULT:
